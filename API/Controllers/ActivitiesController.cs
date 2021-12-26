@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using Application.Activities;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
@@ -18,7 +19,7 @@ namespace API.Controllers
             var resp = await Mediator.Send(new List.Query());
             return HandleResul(resp);
         }
-
+        
         [HttpGet("{id}")]
         public async Task<ActionResult> GetActivities(Guid id)
         {
